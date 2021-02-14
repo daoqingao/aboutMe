@@ -41,23 +41,7 @@ class more extends Component{
                         More
                     </h1>
                 </Col>
-                <Row>
-                    <Col>
-                        <div className="mazedollFont text-light aboutMeParagraph">
-                            Hello, my name is Daoqin, but many people call me Dao.
-                            I am a Computer Science major undergrad student at Stony Brook University living in New York.<br/><br/>
-                            I am someone that enjoys to explore and do new things.<br/>
-                            Some of the things I like to do in my free time ranges from  playing Tetris to playing with stock market Options strategies.
-
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className="mazedollFont text-light aboutMeParagraph">
-                            Nice pictures
-                        </div>
-                    </Col>
-                </Row>
-
+                <a href="https://github.com/daoqingao/aboutMe" className="list-group-item list-group-item-action bg-dark text-light menuHov">Source Code</a>
 
             </div>
         )
