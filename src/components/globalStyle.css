@@ -4,6 +4,22 @@
     font-family: "DIN Next LT W01";
     font-size: 800%;
 }
+.mazedollFont{
+    font-family: "DIN Next LT W01";
+}
+.aboutHeader{
+    margin-top: 1%;
+
+    font-size: 300%;
+    text-align: center;
+}
+.aboutMeParagraph{
+    margin-left: 5%;
+    margin-top: 1%;
+    font-size: 150%;
+
+}
+
 .menuHov:hover{
     opacity: 0.5;
     Color: #1e1e1e;

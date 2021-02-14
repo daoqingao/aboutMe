@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import './globalStyle.css';
 
-class contact extends Component{
+class more extends Component{
     render(){
         return(
             <div>
@@ -38,7 +38,7 @@ class contact extends Component{
 
                 <Col>
                     <h1 className="mazedollFont text-light aboutHeader">
-                        Contacts
+                        More
                     </h1>
                 </Col>
                 <Row>
@@ -66,4 +66,4 @@ class contact extends Component{
     }
 
 }
-export default contact
+export default more

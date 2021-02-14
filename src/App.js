@@ -5,7 +5,7 @@ import './components/globalStyle.css';
 import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
-
+import More from './components/more';
 
 
 import {Container, Row, Col, Card} from 'react-bootstrap';
@@ -44,6 +44,7 @@ class App extends Component {
                 <Route exact path='/home' component={Home}></Route>
                 <Route exact path='/about' component={About}></Route>
                 <Route exact path='/contact' component={Contact}></Route>
+                <Route exact path='/more' component={More}></Route>
 
             </BrowserRouter>
 
