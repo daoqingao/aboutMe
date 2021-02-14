@@ -1,3 +1,13 @@
+@import url(//db.onlinewebfonts.com/c/25c8d3f21fac75e401fe67e5c3878ae4?family=DIN+Next+LT+W01);
+
+.menu{
+    font-family: "DIN Next LT W01";
+    font-size: 800%;
+}
+.menuHov:hover{
+    opacity: 0.5;
+    Color: #1e1e1e;
+}
 
 .bgDark{
     background-color: #1e1e1e;
