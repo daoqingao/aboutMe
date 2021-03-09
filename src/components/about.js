@@ -38,9 +38,11 @@ class about extends Component{
 
                 <Col>
                     <h1 className="mazedollFont text-light aboutHeader">
-                        About me.
+                        About me
                     </h1>
                 </Col>
+
+                <Container>
                     <Row>
                         <Col>
                             <div className="mazedollFont text-light aboutMeParagraph">
@@ -57,6 +59,7 @@ class about extends Component{
                             </div>
                         </Col>
                     </Row>
+                </Container>
 
 
             </div>

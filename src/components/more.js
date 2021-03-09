@@ -41,7 +41,6 @@ class more extends Component{
                         More
                     </h1>
                 </Col>
-                <a href="https://github.com/daoqingao/aboutMe" className="list-group-item list-group-item-action bg-dark text-light menuHov">Source Code</a>
 
             </div>
         )

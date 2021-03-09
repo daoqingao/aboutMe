@@ -1,9 +1,14 @@
 @import url(//db.onlinewebfonts.com/c/25c8d3f21fac75e401fe67e5c3878ae4?family=DIN+Next+LT+W01);
+@import url(https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap);
 
 .menu{
     font-family: "DIN Next LT W01";
     font-size: 800%;
 }
+.newsRead{
+    font-family: 'Newsreader', serif;
+}
+
 .mazedollFont{
     font-family: "DIN Next LT W01";
 }
