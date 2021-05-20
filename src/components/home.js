@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import {Link} from "react-router-dom";
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import './globalStyle.css';
-import topnavbar from './topnavbar';
+import navbarTop from './NavbarTop';
 
 
 

@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
 import {Navbar, Nav, Form, FormControl, Button} from "react-bootstrap";
 
-class topnavbar extends Component {
+class navbarTop extends Component {
     render() {
         return(
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bgDark">
-                    {/*<a className="navbar-brand" href="#">Navbar</a>*/}
-                    {/*<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"*/}
-                    {/*        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">*/}
-                    {/*    <span className="navbar-toggler-icon"></span>*/}
-                    {/*</button>*/}
                     <div className="collapse navbar-collapse " id="navbarNav">
                         <ul className="navbar-nav ">
                             <li className="nav-item active">
@@ -34,4 +29,4 @@ class topnavbar extends Component {
     }
 }
 
-export default topnavbar;
+export default navbarTop;
