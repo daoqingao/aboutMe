@@ -1,24 +1,17 @@
-@import url(//db.onlinewebfonts.com/c/25c8d3f21fac75e401fe67e5c3878ae4?family=DIN+Next+LT+W01);
-@font-face {font-family: "DIN Next LT W01";
-    src: url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.eot"); /* IE9*/
-    src: url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.woff2") format("woff2"), /* chrome firefox */
-    url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.woff") format("woff"), /* chrome firefox */
-    url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
-    url("http://db.onlinewebfonts.com/t/25c8d3f21fac75e401fe67e5c3878ae4.svg#DIN Next LT W01") format("svg"); /* iOS 4.1- */
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 @import url(https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap);
 
 .menu{
-    font-family: "DIN Next LT W01", serif;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
     font-size: 800%;
-}
-.newsRead{
-    font-family: 'Newsreader', serif;
+    font-weight: bold
 }
 
 .mazedollFont{
-    font-family: "DIN Next LT W01", serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
 }
 .aboutHeader{
     margin-top: 1%;
@@ -33,24 +26,22 @@
 
 }
 
-.menuHov:hover{
-    opacity: 0.5;
-    Color: #1e1e1e;
-}
-
 .bgDark{
     background-color: #1e1e1e;
 }
 body{
     background-color: #343a40;
 }
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+
+.menuButton{
+    text-align: center;
+}
+
+.menuButton:hover{
+    cursor: pointer;
+}
+
+.picMemPic{
+
+    max-height: 50%;
 }

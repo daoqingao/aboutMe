@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
 
-
-import {Link} from "react-router-dom";
-import {Container, Row, Col, Card} from 'react-bootstrap';
 import './globalStyle.css';
-import navbarTop from './NavbarTop';
+import Ripples from 'react-ripples'
 
 
 
-class home extends Component{
-    render(){
+const Home = (props) => {
+
+
         return(
             <div>
-                <main className="bg-dark text-light menu">
+                <main className="menu">
                     <div className="list-group">
-                        <a href="/about" className="list-group-item list-group-item-action bg-dark text-light menuHov">About</a>
+                        <a href="/about" className="list-group-item list-group-item-action bg-dark text-light">About</a>
                         <a href="/contact" className="list-group-item list-group-item-action bg-dark text-light">Contact</a>
                         <a href="/more" className="list-group-item list-group-item-action bg-dark text-light">More</a>
                     </div>
@@ -24,7 +21,7 @@ class home extends Component{
 
             </div>
         )
-    }
+
 
 }
-export default home;
+export default Home;

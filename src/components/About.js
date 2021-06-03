@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
-
-import {Link} from "react-router-dom";
 import {Container, Row, Col} from "react-bootstrap";
 
 
-class about extends Component{
+class About extends Component{
     render(){
         return(
-            <div>
-
-
+            <div className="mazedollFont text-light ">
 
                 <Col>
-                    <h1 className="mazedollFont text-light aboutHeader">
+                    <h1  className=" aboutHeader">
                         About me
                     </h1>
                 </Col>
@@ -20,7 +16,7 @@ class about extends Component{
                 <Container>
                     <Row>
                         <Col>
-                            <div className="mazedollFont text-light aboutMeParagraph">
+                            <div className=" text-light aboutMeParagraph">
                                 Hello, my name is Daoqin, but many people call me Dao.
                                 I am a Computer Science major undergrad student at Stony Brook University living in New York.<br/><br/>
                                 I am someone that enjoys to explore and do new things.<br/>
@@ -29,7 +25,7 @@ class about extends Component{
                             </div>
                         </Col>
                         <Col>
-                            <div className="mazedollFont text-light aboutMeParagraph">
+                            <div className=" text-light aboutMeParagraph">
                                 Nice pictures
                             </div>
                         </Col>
@@ -44,4 +40,4 @@ class about extends Component{
     }
 
 }
-export default about;
+export default About;

@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 
-import {Link} from "react-router-dom";
 import {Container, Row, Col, Card} from 'react-bootstrap';
 import './globalStyle.css';
 
-class contact extends Component{
+class Contact extends Component{
     render(){
         return(
             <div>
@@ -33,4 +32,4 @@ class contact extends Component{
     }
 
 }
-export default contact
+export default Contact

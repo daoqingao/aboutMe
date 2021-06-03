@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Route, Link, Switch, BrowserRouter} from 'react
 import React, {Component} from 'react';
 import './components/globalStyle.css';
 import Home from './components/home';
-import About from './components/about';
-import Contact from './components/contact';
-import More from './components/more';
+import About from './components/About';
+import Contact from './components/Contact';
+import More from './components/More';
 import NavbarTop from "./components/NavbarTop";
 
 import { createBrowserHistory } from "history";
@@ -17,10 +17,9 @@ const App = () => {
 
         return (
             <BrowserRouter>
-                    {(history.location.pathname!=="/home" && <NavbarTop/>)}
+                    {(history.location.pathname!=="/" && <NavbarTop/>)}
 
                 <Route exact path='/' component={Home}/>
-                <Route exact path='/home' component={Home}/>
                 <Route exact path='/about' component={About}/>
                 <Route exact path='/contact' component={Contact}/>
                 <Route exact path='/more' component={More}/>
