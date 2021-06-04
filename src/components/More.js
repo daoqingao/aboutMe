@@ -19,7 +19,7 @@ const More  = (props) => {
 
                 {itemNum===-1 &&
                     <Container className="mazedollFont text-light aboutHeader">
-                        {"Library of my other broken side project"}
+                        {"Library of my side projects"}
                         <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {setItemNum(1)}}>
                             Picture Memory
                         </button>
@@ -31,7 +31,7 @@ const More  = (props) => {
                 }
 
                 {itemNum===1 && <PictureMemoryMain/>}
-                {itemNum===2 &&                 <Attractors/>}
+                {itemNum===2 && <Attractors/>}
 
 
             </div>
