@@ -1,6 +1,7 @@
 import React, { useRef, useEffect,useState } from 'react'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
-const Attractors = props => {
+
+const DoublePendulum = props => {
 
     const canvasRef = useRef(null)
 
@@ -41,7 +42,6 @@ const Attractors = props => {
     let height=600
     let xOffSet=width/2
     let yOffSet=275
-    let zOffSet=0
 
     let scale=variables["scale"]
 
@@ -49,18 +49,34 @@ const Attractors = props => {
 
     const attractorCalculate = (type) => {
 
-
+        // if(type==="aizawa"){
+        //
+        //
+        //     dx=y
+        //     dx=z
+        //     dx=(-1*x)-(b*y)-z+x^3
+        //
+        //
+        // }
+        // else if(type==="halvorsen"){
+        //     dx=((-1*a*x)-(4*y)-(4*z)-(y*y))
+        //     dy=((-1*a*y)-(4*z)-(4*x)-(z*z))
+        //     dz=((-1*a*z)-(4*x)-(4*y)-(x*x))
+        //
+        // }
+        // else
+        {
             dx=(a*(y-x))
             dy=(x*(p-z)-y)
             dz=(x*y-b*z)
-
-         x+=dx*dt/dDelta
-         y+=dy*dt/dDelta
-         z+=dz*dt/dDelta
+        }
+        x+=dx*dt/dDelta
+        y+=dy*dt/dDelta
+        z+=dz*dt/dDelta
 
         disX=x*scale+xOffSet
         disY=y*scale+yOffSet
-        disZ=z*scale+zOffSet
+        disZ=z*scale+500
 
         let dict={
             x:disX,
@@ -68,6 +84,8 @@ const Attractors = props => {
             z:disZ,
         }
         vecArr.push(dict)
+
+        // console.log(disX+","+disY+","+z)
     }
 
 
@@ -155,60 +173,60 @@ const Attractors = props => {
         The lorenz attractor
         <Container>
 
-<Row>
-    <canvas
-        width={width}
-        height={height}
-        ref={canvasRef} {...props}/>
-<Col>
-    <Col className={"attractorSlider"}>
-        <Col>
-            ρ:{variables["p"]}
-            <input type="range" min="1" max="100" defaultValue={p} onInput={(e)=>{
-                handleSlideChange("p",e.target.value)
-            }}/>
-        </Col>
-        <Col>
-            σ:{a}
-            <input type="range" min="1" max="100" defaultValue={a} onInput={(e)=>{
-                handleSlideChange("a",e.target.value)
-            }}/>
-        </Col>
-        <Col>
-            β:{Math.round(b)}
-            <input type="range" min="1" max="100" defaultValue={b} onInput={(e)=>{
-                handleSlideChange("b",e.target.value)
-            }}/>
-        </Col>
+            <Row>
+                <canvas
+                    width={width}
+                    height={height}
+                    ref={canvasRef} {...props}/>
+                <Col>
+                    <Col className={"attractorSlider"}>
+                        <Col>
+                            ρ:{variables["p"]}
+                            <input type="range" min="1" max="100" defaultValue={p} onInput={(e)=>{
+                                handleSlideChange("p",e.target.value)
+                            }}/>
+                        </Col>
+                        <Col>
+                            σ:{a}
+                            <input type="range" min="1" max="100" defaultValue={a} onInput={(e)=>{
+                                handleSlideChange("a",e.target.value)
+                            }}/>
+                        </Col>
+                        <Col>
+                            β:{Math.round(b)}
+                            <input type="range" min="1" max="100" defaultValue={b} onInput={(e)=>{
+                                handleSlideChange("b",e.target.value)
+                            }}/>
+                        </Col>
 
-        <Col>
-            Scale:{scale}
-            <input type="range" min="1" max="20" defaultValue={scale} onInput={(e)=>{
-                handleSlideChange("scale",e.target.value)
-            }}/>
-        </Col>
+                        <Col>
+                            Scale:{scale}
+                            <input type="range" min="1" max="20" defaultValue={scale} onInput={(e)=>{
+                                handleSlideChange("scale",e.target.value)
+                            }}/>
+                        </Col>
 
-        <Col>
-            Speed:{speed}
-            <input type="range" min="1" max="20" defaultValue={speed*10} onInput={(e)=>{
-                handleSlideChange("speed",e.target.value)
-            }}/>
-        </Col>
-    </Col>
+                        <Col>
+                            Speed:{speed}
+                            <input type="range" min="1" max="20" defaultValue={speed*10} onInput={(e)=>{
+                                handleSlideChange("speed",e.target.value)
+                            }}/>
+                        </Col>
+                    </Col>
 
-    <Container>
-        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("lorenz")}}>
-            Lorenz Attractor
-        </button>
-        {/*<button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("aizawa")}}>*/}
-        {/*    Aizawa Attractor*/}
-        {/*</button>*/}
-    </Container>
-</Col>
-</Row>
+                    <Container>
+                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("lorenz")}}>
+                            Lorenz Attractor
+                        </button>
+                        {/*<button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("aizawa")}}>*/}
+                        {/*    Aizawa Attractor*/}
+                        {/*</button>*/}
+                    </Container>
+                </Col>
+            </Row>
         </Container>
 
     </div>
 }
 
-export default Attractors
+export default DoublePendulum
