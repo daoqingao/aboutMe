@@ -10,17 +10,18 @@ class Contact extends Component{
 
                 <Col>
                     <h1 className="mazedollFont text-light aboutHeader">
-                        Contacts
+                        My Contacts
                     </h1>
                 </Col>
 
                 <Container>
 
                     <div className="list-group mazedollFont ">
-                        <a href="https://github.com/daoqingao/aboutMe" className="list-group-item list-group-item-action bg-dark text-light menuHov">Source Code</a>
+                        <a href="https://github.com/daoqingao/aboutMe" className="list-group-item list-group-item-action bg-dark text-light menuHov">Github -> website source code</a>
 
-                        <a href="mailto:daoqingao@gmail.com" className="list-group-item list-group-item-action bg-dark text-light">daoqingao@gmail.com</a>
-                        <a href="/more" className="list-group-item list-group-item-action bg-dark text-light">More</a>
+                        <a href="mailto:daoqingao@gmail.com" className="list-group-item list-group-item-action bg-dark text-light">Email -> daoqingao@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/daoqin-gao/" className="list-group-item list-group-item-action bg-dark text-light">LinkedIn -> Profile Page</a>
+                        <a href="" className="list-group-item list-group-item-action bg-dark text-light">Phone -> (646)-820-4690</a>
                     </div>
 
                 </Container>

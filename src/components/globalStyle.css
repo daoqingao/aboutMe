@@ -14,6 +14,7 @@
     font-weight: bold;
 }
 .aboutHeader{
+    color: azure;
     margin-top: 1%;
 
     font-size: 300%;
@@ -52,4 +53,39 @@ body{
 .lightBlueButton{
     color:black;
     background-color: #b9d3ee;
+}
+
+
+
+.homeButton::after {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: 105%;
+    width: 0;
+    height: 2px;
+    border-bottom: 10px solid lightblue;
+}
+.homeButton, .homeButton::after {
+    transition: all 0.2s linear;
+}
+.homeButton:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.homeButton{
+
+    border: #343a40;
+    background: #343a40;
+
+}
+.homeButton:hover{
+    color: lightblue;
+    background: #343a40;
+}
+
+.homeButtonLineToText{
+    display: inline-block;
 }
