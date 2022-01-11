@@ -18,14 +18,6 @@ const PictureMemoryMain = (props) => {
         const picQuestions = ["What color are the shoes","What color is the shirt","What color are the eyes","What color are the pants"]
 
 
-        // let picCont={}
-        // picCont["/toonGirl.jpg"]={
-        //     "What color are the shoes":"brown",
-        //     "What color are the eyes":"black",
-        //     "What color is the shirt":"red",
-        //     "What color is the pant":"white/pink"
-        // }
-
 
         const [questionRand, setQuestionRand] = React.useState(Math.floor(Math.random() * picQuestions.length));
 
@@ -44,7 +36,6 @@ const PictureMemoryMain = (props) => {
 
 
         let listOfFiles = ["1.jpg","2.jpg","toonGirl.jpg"]
-
         let publicPath= process.env.PUBLIC_URL;
         publicPath+="PictureMemoryPictures/"
 
@@ -103,7 +94,7 @@ const PictureMemoryMain = (props) => {
                     <button type="button" className="btn btn-primary btn-lg btn-block"  onClick={()=>{resetCounter()}}>Next</button>
                 </Container>}
 
-                {showNext &&                     <button type="button" className="btn btn-primary btn-lg btn-block"  onClick={()=>{resetCounter()}}>Next</button>}
+                {showNext &&  <button type="button" className="btn btn-primary btn-lg btn-block"  onClick={()=>{resetCounter()}}>Next</button>}
 
 
 

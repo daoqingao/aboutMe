@@ -48,3 +48,8 @@ body{
 .attractorSlider{
     font-size: 24px;
 }
+
+.lightBlueButton{
+    color:black;
+    background-color: #b9d3ee;
+}

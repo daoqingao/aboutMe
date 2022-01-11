@@ -197,9 +197,20 @@ const Attractors = props => {
     </Col>
 
     <Container>
-        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("lorenz")}}>
-            Lorenz Attractor
+
+
+        <button type="button" className="btn btn-primary btn-lg btn-block lightBlueButton" onClick={() => {handleSystemChange("lorenz")}}>
+            Reset
         </button>
+
+        <Col className="btn-lg btn-block">
+            Lorenz attractor follows the following formula<br /><br/>
+            dx = σ(y-x)<br />
+            dy = x(ρ-z)-y<br />
+            dz = xy-βz<br />
+        </Col>
+
+
         {/*<button type="button" className="btn btn-primary btn-lg btn-block" onClick={() => {handleSystemChange("aizawa")}}>*/}
         {/*    Aizawa Attractor*/}
         {/*</button>*/}

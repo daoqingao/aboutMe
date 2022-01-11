@@ -1,6 +1,5 @@
 import React, { useRef, useEffect,useState } from 'react'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap';
-
 const DoublePendulum = props => {
 
     const canvasRef = useRef(null)
@@ -14,11 +13,7 @@ const DoublePendulum = props => {
         "scale":10,
         "type":"lorenz",
         "speed":0.75,
-
     });
-
-
-
     let x=0.01
     let y=0.01
     let z=0.01
@@ -42,6 +37,7 @@ const DoublePendulum = props => {
     let height=600
     let xOffSet=width/2
     let yOffSet=275
+    let zOffSet=0
 
     let scale=variables["scale"]
 
@@ -49,34 +45,18 @@ const DoublePendulum = props => {
 
     const attractorCalculate = (type) => {
 
-        // if(type==="aizawa"){
-        //
-        //
-        //     dx=y
-        //     dx=z
-        //     dx=(-1*x)-(b*y)-z+x^3
-        //
-        //
-        // }
-        // else if(type==="halvorsen"){
-        //     dx=((-1*a*x)-(4*y)-(4*z)-(y*y))
-        //     dy=((-1*a*y)-(4*z)-(4*x)-(z*z))
-        //     dz=((-1*a*z)-(4*x)-(4*y)-(x*x))
-        //
-        // }
-        // else
-        {
-            dx=(a*(y-x))
-            dy=(x*(p-z)-y)
-            dz=(x*y-b*z)
-        }
+
+        dx=(a*(y-x))
+        dy=(x*(p-z)-y)
+        dz=(x*y-b*z)
+
         x+=dx*dt/dDelta
         y+=dy*dt/dDelta
         z+=dz*dt/dDelta
 
         disX=x*scale+xOffSet
         disY=y*scale+yOffSet
-        disZ=z*scale+500
+        disZ=z*scale+zOffSet
 
         let dict={
             x:disX,
@@ -84,8 +64,6 @@ const DoublePendulum = props => {
             z:disZ,
         }
         vecArr.push(dict)
-
-        // console.log(disX+","+disY+","+z)
     }
 
 
