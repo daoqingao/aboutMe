@@ -57,8 +57,15 @@ const EvaStudy = (props) => {
     const IndexNext = () => {
         SetCurrentPairIndex(currentPairIndex => currentPairIndex+1)
     }
+
+    const ToggleShowAns = () => {
+        setShowAns(showAns => !showAns)
+    }
+
     const handleKeyPress = (event) => {
-        console.log("bruh")
+        if(event.key === " "){
+            ToggleShowAns()
+        }
         if(event.key === "ArrowRight"){
             IndexNext()
         }
@@ -66,10 +73,6 @@ const EvaStudy = (props) => {
             IndexPrev()
         }
     };
-
-    const ToggleShowAns = () => {
-        setShowAns(!showAns)
-    }
 
 
     return (
