@@ -6,22 +6,13 @@ const EvaStudy = (props) => {
 
     const [showAns,setShowAns] = useState(false)
 
-    // const handleKeyPress = useCallback((event) => {
-    //     if(event.key === "ArrowRight"){
-    //         IndexNext()
-    //     }
-    //     if(event.key === "ArrowLeft"){
-    //         IndexPrev()
-    //     }
-    //     console.log(`Key pressed: ${event.key}`);
-    // }, []);
-    //
-    // useEffect(() => {
-    //     document.addEventListener('keydown', handleKeyPress);
-    //     return () => {
-    //         document.removeEventListener('keydown', handleKeyPress);
-    //     };
-    // }, [handleKeyPress]);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
     useEffect(() => {
         console.log("init")
         const json = localStorage.getItem("quesAnsPair");
@@ -61,13 +52,21 @@ const EvaStudy = (props) => {
     }
 
     const IndexPrev = () => {
-        SetCurrentPairIndex(currentPairIndex-1)
+        SetCurrentPairIndex(currentPairIndex => currentPairIndex-1)
     }
     const IndexNext = () => {
-        console.log("called right")
-        console.log(currentPairIndex)
-        SetCurrentPairIndex(currentPairIndex+1)
+        SetCurrentPairIndex(currentPairIndex => currentPairIndex+1)
     }
+    const handleKeyPress = (event) => {
+        console.log("bruh")
+        if(event.key === "ArrowRight"){
+            IndexNext()
+        }
+        if(event.key === "ArrowLeft"){
+            IndexPrev()
+        }
+    };
+
     const ToggleShowAns = () => {
         setShowAns(!showAns)
     }
