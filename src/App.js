@@ -7,6 +7,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import More from './components/More';
 import NavbarTop from "./components/NavbarTop";
+import EvaStudy from "./components/MoreProj/EvaStudy";
 
 import { createBrowserHistory } from "history";
 
@@ -23,6 +24,9 @@ const App = () => {
                 <Route exact path='/about' component={About}/>
                 <Route exact path='/contact' component={Contact}/>
                 <Route exact path='/more' component={More}/>
+
+                <Route exact path='/extra' component={EvaStudy}/>
+
 
             </BrowserRouter>
 

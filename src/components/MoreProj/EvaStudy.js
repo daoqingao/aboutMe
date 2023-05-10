@@ -139,21 +139,22 @@ const EvaStudy = (props) => {
     const canvasRef = useRef(null)
     const [text,setText] = useState("")
 
-    const [currentPairIndex,SetCurrentPairIndex] = useState(-1)
+    const [currentPairIndex,SetCurrentPairIndex] = useState(0)
     const [wordDefPair,wordDef] = useState([])
 
 
     const [showAns,setShowAns] = useState(false)
-    const handleText = (e) => {
-        let handleText = text
-        if(handleText === "")
-            handleText = str
-        let lineLst = handleText.split("\n")
 
+    useEffect(() => {
+        console.log("init")
+        handleText(str)
+    },[])
+    const handleText = (inputText) => {
+        let text = inputText
+        let lineLst = text.split("\n")
         let newWordDef  = []
         for(let i=0;i<lineLst.length;i++){
             let lineContentArr = lineLst[i].split("=")
-            // let pair = [lineContentArr[0],lineContentArr[1]]
             let ques = lineContentArr[0]
             let ans = lineContentArr[1]
             let pair = {
@@ -162,35 +163,30 @@ const EvaStudy = (props) => {
             }
             if(ques=== undefined || ans === undefined)
                 continue
-            console.log(pair)
             newWordDef.push(pair)
         }
-
-        console.log(newWordDef)
         wordDef(newWordDef)
-        console.log(wordDefPair)
         SetCurrentPairIndex(0)
-
     }
     return (
 
         <>
         <div className="card" >
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">{wordDefPair[currentPairIndex]?.ques}</p>
+                <h5 className="card-title">{wordDefPair[currentPairIndex]?.ques}</h5>
+                {showAns && <p className="card-text">{wordDefPair[currentPairIndex]?.ans}</p>}
 
-                {showAns &&                 <p className="card-text">{wordDefPair[currentPairIndex]?.ans}</p>}
 
+            </div>
+
+        </div>
+            <div className="card-body">
                 <button type="button" className="btn btn-primary" onClick={e=>{SetCurrentPairIndex(currentPairIndex-1)}}>Prev</button>
                 <button type="button" className="btn btn-primary" onClick={e=>{setShowAns(!showAns)}}>Show</button>
                 <button type="button" className="btn btn-primary" onClick={e=>{SetCurrentPairIndex(currentPairIndex+1)}}>Next</button>
 
             </div>
-        </div>
-
-
-    <button type="button" className="btn btn-primary" onClick={handleText}>Basic</button>
+            <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Basic</button>
 
             <div className="form-group">
                 <textarea className="form-control" rows="5" id="comment" onChange={event => (setText(event.target.value))}></textarea>
