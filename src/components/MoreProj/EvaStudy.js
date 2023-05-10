@@ -1,4 +1,4 @@
-import React, { useRef, useEffect,useState } from 'react'
+import React, {useRef, useEffect, useState, useCallback} from 'react'
 const EvaStudy = (props) => {
     const [text,setText] = useState("")
     const [currentPairIndex,SetCurrentPairIndex] = useState(0)
@@ -6,6 +6,22 @@ const EvaStudy = (props) => {
 
     const [showAns,setShowAns] = useState(false)
 
+    // const handleKeyPress = useCallback((event) => {
+    //     if(event.key === "ArrowRight"){
+    //         IndexNext()
+    //     }
+    //     if(event.key === "ArrowLeft"){
+    //         IndexPrev()
+    //     }
+    //     console.log(`Key pressed: ${event.key}`);
+    // }, []);
+    //
+    // useEffect(() => {
+    //     document.addEventListener('keydown', handleKeyPress);
+    //     return () => {
+    //         document.removeEventListener('keydown', handleKeyPress);
+    //     };
+    // }, [handleKeyPress]);
     useEffect(() => {
         console.log("init")
         const json = localStorage.getItem("quesAnsPair");
@@ -37,33 +53,50 @@ const EvaStudy = (props) => {
             if(ques=== undefined || ans === undefined)
                 continue
             newWordDef.push(pair)
+            console.log(pair)
         }
         setQuesAnsPair(newWordDef)
+        console.log(newWordDef)
         SetCurrentPairIndex(0)
     }
+
+    const IndexPrev = () => {
+        SetCurrentPairIndex(currentPairIndex-1)
+    }
+    const IndexNext = () => {
+        console.log("called right")
+        console.log(currentPairIndex)
+        SetCurrentPairIndex(currentPairIndex+1)
+    }
+    const ToggleShowAns = () => {
+        setShowAns(!showAns)
+    }
+
+
     return (
 
         <>
-        <div className="card" >
-            <div className="card-body">
-                <h5 className="card-title">{quesAnsPair[currentPairIndex]?.ques}</h5>
-                {showAns && <p className="card-text">{quesAnsPair[currentPairIndex]?.ans}</p>}
+            <div >
+                <div className="card" >
+                    <div className="card-body">
+                        <h5 className="card-title">{quesAnsPair[currentPairIndex]?.ques}</h5>
+                        {showAns && <p className="card-text">{quesAnsPair[currentPairIndex]?.ans}</p>}
+                    </div>
 
+                </div>
+                <div className="card-body">
+                    <button type="button" className="btn btn-primary" onClick={IndexPrev}>Prev</button>
+                    <button type="button" className="btn btn-primary" onClick={ToggleShowAns}>Show</button>
+                    <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
 
+                </div>
+                <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Basic</button>
+
+                <div className="form-group">
+                    <textarea className="form-control" rows="5" id="comment" onChange={event => (setText(event.target.value))}></textarea>
+                </div>
             </div>
 
-        </div>
-            <div className="card-body">
-                <button type="button" className="btn btn-primary" onClick={e=>{SetCurrentPairIndex(currentPairIndex-1)}}>Prev</button>
-                <button type="button" className="btn btn-primary" onClick={e=>{setShowAns(!showAns)}}>Show</button>
-                <button type="button" className="btn btn-primary" onClick={e=>{SetCurrentPairIndex(currentPairIndex+1)}}>Next</button>
-
-            </div>
-            <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Basic</button>
-
-            <div className="form-group">
-                <textarea className="form-control" rows="5" id="comment" onChange={event => (setText(event.target.value))}></textarea>
-            </div>
         </>
     )
 }
