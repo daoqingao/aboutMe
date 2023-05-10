@@ -47,12 +47,11 @@ const EvaStudy = (props) => {
             console.log(pair)
         }
         setQuesAnsPair(newWordDef)
-        console.log(newWordDef)
         SetCurrentPairIndex(0)
     }
 
     const IndexPrev = () => {
-        SetCurrentPairIndex(currentPairIndex => currentPairIndex-1)
+        SetCurrentPairIndex(currentPairIndex => currentPairIndex-1 <0 ? currentPairIndex: currentPairIndex-1)
     }
     const IndexNext = () => {
         SetCurrentPairIndex(currentPairIndex => currentPairIndex+1)
@@ -74,6 +73,19 @@ const EvaStudy = (props) => {
         }
     };
 
+    const handleShuffle = () => {
+        let copy = quesAnsPair
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        shuffle(copy)
+        setQuesAnsPair(copy1 => [...copy])
+    }
+
 
     return (
 
@@ -92,11 +104,21 @@ const EvaStudy = (props) => {
                     <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
 
                 </div>
-                <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Basic</button>
+
+
+                <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Submit Text</button>
+
+                <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
+
+                <h5 className="card-title" style={{color:"White"}}>
+                    Format: [Insert Question] = [Insert Answer] <br/>
+                    Each pair must be seprated by a line<br/>
+                </h5>
 
                 <div className="form-group">
                     <textarea className="form-control" rows="5" id="comment" onChange={event => (setText(event.target.value))}></textarea>
                 </div>
+
             </div>
 
         </>
