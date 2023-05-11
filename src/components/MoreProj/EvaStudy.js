@@ -145,12 +145,14 @@ const EvaStudy = (props) => {
     const [quesAnsPair,setQuesAnsPair] = useState([])
     const [showAns,setShowAns] = useState(false)
 
+
+
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
         return () => {
             document.removeEventListener('keydown', handleKeyPress);
         };
-    }, []);
+    }, [quesAnsPair,currentPairIndex]);
 
     //getting the questionData
     useEffect(() => {
@@ -200,12 +202,13 @@ const EvaStudy = (props) => {
         SetCurrentPairIndex(currentPairIndex => currentPairIndex+1 >=quesAnsPair.length ? currentPairIndex: currentPairIndex+1)
     }
     const ToggleCorrect = () => {
+        console.log(quesAnsPair[currentPairIndex])
+        console.log(quesAnsPair)
         let copy =  quesAnsPair
         copy[currentPairIndex].correct = !copy[currentPairIndex].correct
         setQuesAnsPair(prev=> {
             return [...copy]
         })
-        console.log(quesAnsPair)
     }
 
     const ToggleShowAns = () => {
@@ -222,9 +225,9 @@ const EvaStudy = (props) => {
         if(event.key === "ArrowLeft"){
             IndexPrev()
         }
-        // if(event.key === "w"){
-        //     ToggleCorrect()
-        // }
+        if(event.key === "w"){
+            ToggleCorrect()
+        }
     };
 
     const handleShuffle = () => {
