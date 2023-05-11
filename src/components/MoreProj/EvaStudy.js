@@ -201,11 +201,12 @@ const EvaStudy = (props) => {
     const IndexNext = () => {
         SetCurrentPairIndex(currentPairIndex => currentPairIndex+1 >=quesAnsPair.length ? currentPairIndex: currentPairIndex+1)
     }
-    const ToggleCorrect = () => {
-        console.log(quesAnsPair[currentPairIndex])
-        console.log(quesAnsPair)
+    const ToggleCorrect = (boolean) => {
         let copy =  quesAnsPair
-        copy[currentPairIndex].correct = !copy[currentPairIndex].correct
+        if(boolean===undefined){
+            boolean = !copy[currentPairIndex].correct
+        }
+        copy[currentPairIndex].correct = boolean
         setQuesAnsPair(prev=> {
             return [...copy]
         })
@@ -216,7 +217,8 @@ const EvaStudy = (props) => {
     }
 
     const handleKeyPress = (event) => {
-        if(event.key === " " || event.key === "s"){
+        if(event.key === " "){
+            event.preventDefault();
             ToggleShowAns()
         }
         if(event.key === "ArrowRight"){
@@ -225,8 +227,13 @@ const EvaStudy = (props) => {
         if(event.key === "ArrowLeft"){
             IndexPrev()
         }
-        if(event.key === "w"){
-            ToggleCorrect()
+        if(event.key === "ArrowUp"){
+            event.preventDefault();
+            ToggleCorrect(true)
+        }
+        if(event.key === "ArrowDown"){
+            event.preventDefault();
+            ToggleCorrect(false)
         }
     };
 
