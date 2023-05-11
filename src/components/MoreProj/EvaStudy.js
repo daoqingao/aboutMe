@@ -162,7 +162,7 @@ const EvaStudy = (props) => {
         if (wordDefPair) {
             setQuesAnsPair(wordDefPair);
         }
-        handleText(str)
+        // handleText(str)
     },[])
 
     //saving the quesAnsData
