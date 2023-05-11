@@ -1,7 +1,17 @@
 import React, {useRef, useEffect, useState, useCallback} from 'react'
-import {Paper} from "@mui/material";
 import * as PropTypes from "prop-types";
 import StudyTable from "./StudyTable";
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import {Grid} from "@mui/material";
 
 const EvaStudy = (props) => {
 
@@ -145,6 +155,8 @@ const EvaStudy = (props) => {
     const [quesAnsPair,setQuesAnsPair] = useState([])
     const [showAns,setShowAns] = useState(false)
 
+    const [prevData,setPrevData] = useState([])
+
 
 
     useEffect(() => {
@@ -169,8 +181,11 @@ const EvaStudy = (props) => {
 
     //saving the quesAnsData
     useEffect(() => {
-        const json = JSON.stringify(quesAnsPair);
-        localStorage.setItem("quesAnsPair", json);
+        let json = JSON.stringify(quesAnsPair);
+        if(prevData.length!==0){
+            json = JSON.stringify(prevData);
+        }
+            localStorage.setItem("quesAnsPair", json);
     }, [quesAnsPair]);
 
     const handleText = (inputText) => {
@@ -218,15 +233,18 @@ const EvaStudy = (props) => {
         setShowAns(showAns => !showAns)
     }
 
-    const [prevData,setPrevData] = useState([])
     const FilterIncorrect = () => {
-        console.log("filter")
-        console.log(prevData)
-    if(prevData.length!== 0){
+        SetCurrentPairIndex(0)
+    if(prevData.length!== 0){ //revert to original if we have anything
+        console.log("called to revert")
+
         setQuesAnsPair(prev=>{
             return [...prevData]
         })
-        setPrevData([])
+        setPrevData(prev=>{
+            prev.length=0
+            return prev
+        }) //clear the storage
         return
     }
         setPrevData([...quesAnsPair])
@@ -234,7 +252,6 @@ const EvaStudy = (props) => {
         copy = copy.filter(x=>{
             return !x.correct
         })
-        console.log(copy)
         setQuesAnsPair(prev=>{
             return [...copy]
         })
@@ -290,24 +307,26 @@ const EvaStudy = (props) => {
 
         <>
             <div >
-                <div className="card" >
-                    <div className="card-body">
-                        <h5 className="card-title">{quesAnsPair[currentPairIndex]?.ques }</h5>
-                        <h5 className="card-title">{quesAnsPair[currentPairIndex]?.correct?"✅":"❌"}</h5>
 
-                        {showAns && <p className="card-text">{quesAnsPair[currentPairIndex]?.ans}</p>}
+
+                <div className="card" style={{width:'50%',margin:'auto',backgroundColor:"#1A2027",}}>
+                    <div className="card-body">
+                        <h5 className="card-title"style={{color:"white"}}>{quesAnsPair[currentPairIndex]?.ques }</h5>
+                        <h5 className="card-title"style={{color:"white"}}>{quesAnsPair[currentPairIndex]?.correct?"✅":"❌"}</h5>
+                        {showAns && <p className="card-text" style={{color:"white"}}>{quesAnsPair[currentPairIndex]?.ans}</p>}
                     </div>
 
-                </div>
-                <div className="card-body">
-                    <button type="button" className="btn btn-primary" onClick={IndexPrev}>Prev</button>
-                    <button type="button" className="btn btn-primary" onClick={ToggleShowAns}>Show</button>
-                    <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
-                    <button type="button" className="btn btn-primary" onClick={ToggleCorrect}>Mark Correct/Incorrect</button>
-                    <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
-                    <button type="button" className="btn btn-primary" onClick={e=> {FilterIncorrect()}}>Filter Corrects</button>
+                    <Grid item xs>
 
+                            <button type="button" className="btn btn-primary" onClick={IndexPrev}>Prev</button>
+                            <button type="button" className="btn btn-primary" onClick={ToggleShowAns}>Show</button>
+                            <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
+                            <button type="button" className="btn btn-primary" onClick={ToggleCorrect}>Mark Correct/Incorrect</button>
+                            <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
+                            <button type="button" className="btn btn-primary" onClick={e=> {FilterIncorrect()}}>Filter Corrects</button>
+                    </Grid>
                 </div>
+
 
 
                 <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Submit Text</button>
