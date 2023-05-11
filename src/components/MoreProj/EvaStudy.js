@@ -206,9 +206,8 @@ const EvaStudy = (props) => {
     }
     const ToggleCorrect = (boolean) => {
         let copy =  quesAnsPair
-        if(boolean===undefined){
+        if(boolean===undefined)
             boolean = !copy[currentPairIndex].correct
-        }
         copy[currentPairIndex].correct = boolean
         setQuesAnsPair(prev=> {
             return [...copy]
@@ -217,6 +216,29 @@ const EvaStudy = (props) => {
 
     const ToggleShowAns = () => {
         setShowAns(showAns => !showAns)
+    }
+
+    const [prevData,setPrevData] = useState([])
+    const FilterIncorrect = () => {
+        console.log("filter")
+        console.log(prevData)
+    if(prevData.length!== 0){
+        setQuesAnsPair(prev=>{
+            return [...prevData]
+        })
+        setPrevData([])
+        return
+    }
+        setPrevData([...quesAnsPair])
+        let copy =  quesAnsPair
+        copy = copy.filter(x=>{
+            return x.correct
+        })
+        console.log(copy)
+        setQuesAnsPair(prev=>{
+            return [...copy]
+        })
+
     }
 
     const handleKeyPress = (event) => {
@@ -241,6 +263,9 @@ const EvaStudy = (props) => {
         if(event.key === "s"){
             event.preventDefault();
             handleShuffle()
+        }
+        if(event.key === "q"){
+            FilterIncorrect()
         }
         if(event.key === "Enter"){
             handleText(text)
@@ -280,6 +305,7 @@ const EvaStudy = (props) => {
                     <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
                     <button type="button" className="btn btn-primary" onClick={ToggleCorrect}>Mark Correct/Incorrect</button>
                     <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
+                    <button type="button" className="btn btn-primary" onClick={e=> {FilterIncorrect()}}>Filter Corrects</button>
 
                 </div>
 
