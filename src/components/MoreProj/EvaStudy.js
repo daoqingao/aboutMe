@@ -232,7 +232,7 @@ const EvaStudy = (props) => {
         setPrevData([...quesAnsPair])
         let copy =  quesAnsPair
         copy = copy.filter(x=>{
-            return x.correct
+            return !x.correct
         })
         console.log(copy)
         setQuesAnsPair(prev=>{
