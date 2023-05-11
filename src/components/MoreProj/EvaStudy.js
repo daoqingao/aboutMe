@@ -175,6 +175,9 @@ const EvaStudy = (props) => {
 
     const handleText = (inputText) => {
         let text = inputText
+        if(text===""){
+            text = str
+        }
         let lineLst = text.split("\n")
         let newWordDef  = []
         for(let i=0;i<lineLst.length;i++){
@@ -235,6 +238,13 @@ const EvaStudy = (props) => {
             event.preventDefault();
             ToggleCorrect(false)
         }
+        if(event.key === "s"){
+            event.preventDefault();
+            handleShuffle()
+        }
+        if(event.key === "Enter"){
+            handleText(text)
+        }
     };
 
     const handleShuffle = () => {
@@ -269,13 +279,13 @@ const EvaStudy = (props) => {
                     <button type="button" className="btn btn-primary" onClick={ToggleShowAns}>Show</button>
                     <button type="button" className="btn btn-primary" onClick={IndexNext}>Next</button>
                     <button type="button" className="btn btn-primary" onClick={ToggleCorrect}>Mark Correct/Incorrect</button>
+                    <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
 
                 </div>
 
 
                 <button type="button" className="btn btn-primary" onClick={e=> {handleText(text)}}>Submit Text</button>
 
-                <button type="button" className="btn btn-primary" onClick={e=> {handleShuffle()}}>Shuffle</button>
 
                 <h5 className="card-title" style={{color:"White"}}>
                     Format: [Insert Question] = [Insert Answer] <br/>
